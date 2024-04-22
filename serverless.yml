@@ -1,0 +1,22 @@
+service: sls-apireto
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+
+plugins:
+  - serverless-offline
+  
+functions:
+  api:
+    handler: handler.handler
+    events:
+      - httpApi: '*'
+    environment:
+      MYSQL_HOST: "localhost"
+      MYSQL_USER: "root"
+      MYSQL_PASSWORD: ""
+      MYSQL_DATABASE: "test"
+      URL_SWAPI: "https://swapi.py4e.com/api"
+
